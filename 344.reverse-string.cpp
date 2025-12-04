@@ -10,7 +10,15 @@ using namespace std;
 class Solution {
 public:
     void reverseString(vector<char>& s) {
-        reverse(s.begin(),s.end());
+       int stringLength = s.size();
+       int firstPointer = 0;
+       int lastPointer = s.size()-1;
+       while(firstPointer<lastPointer){
+        swap(s[firstPointer],s[lastPointer]);
+        firstPointer++;
+        lastPointer--;
+       }
+       return;
     }
     
 };
