@@ -7,36 +7,51 @@
 // @lc code=start
 #include <bits/stdc++.h>
 using namespace std;
-class Solution {
+class Solution
+{
 public:
-    bool isValid(string s) {
-        stack<char>st;
-        for(int i=0;i<s.length();i++){
-            if(s[i]=='('||s[i]=='{' ||s[i]=='['){
-                st.push(s[i]);
+    bool isValid(string s)
+    {
+        stack<char> st;
+        for (char c : s)            // Range based for Loop
+        {
+            if(c=='(' || c=='{' || c=='[')
+            {
+                st.push(c);
             }
-            else{
-                if(!st.empty()){
-                    if((s[i]==')' && st.top()=='(') ||
-                    (s[i]=='}' && st.top()=='{') ||
-                    (s[i]==']' && st.top()=='[')){
+            else
+            {
+                if(st.empty())
+                {
+                    return false;
+                }
+                
+                else
+                {
+                    if(c==')' && st.top()=='(')
+                    {
                         st.pop();
                     }
-                    else{
-                        return false;
+                    else if(c=='}' && st.top()=='{')
+                    {
+                        st.pop();
                     }
-                }
-                return false;
-            }
-        }
-        if(st.empty()){
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
+                    else if(c==']' && st.top()=='[')
+                    {
+                        st.pop();
+                    }
+                    else
+                    {
+                        return false;
 
+                    }
+                    
+                }
+            }
+
+        }
+        return st.empty();
+    }
+     
 };
 // @lc code=end
-
