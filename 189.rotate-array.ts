@@ -9,19 +9,14 @@
  Do not return anything, modify nums in-place instead.
  */
 function rotate(nums: number[], k: number): void {
-    const N = nums.length;
-    const K = k %N;
-    const B = N-K-1;
-    swap(nums,0,B);
-    swap(nums,B+1,N-1);
-    swap(nums,0,N-1);
+    const arr = [...nums];
+    const arrLength = nums.length;
+    for(let i =0;i<arrLength;i++){
+        let index = (i+k)%arrLength ;
+        nums[index]= arr[i];
 
-
+    }
 };
-function swap(nums:number[],head:number,tail:number){
-   let temp = head;
-    nums[head] = nums[tail];
-    nums[tail] = temp;
-}
+
 // @lc code=end
 
