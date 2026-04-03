@@ -34,8 +34,25 @@ n == height.length
 0 <= height[i] <= 104
  */
 
-let maxWater = 0;
-let left = 0;
-let right = height.length - 1;
+function maxArea(height: number[]): number {
+    let maxWater = 0;
+    let left = 0;
+    let right = height.length - 1;
+    while (left < right) {
+        const width = right - left;
+        const heightOfWater = Math.min(height[left], height[right]);
+        const area = width * heightOfWater;
+        maxWater = Math.max(maxWater, area);
+        if (height[left] < height[right]) {
+            left++;
+        }
+        else {
+            right--;
+        }
+    }
+    return maxWater;
+};
+
+
 
 
