@@ -49,7 +49,7 @@ function maxVowels(s: string, k: number): number {
         if (vowels.has(s[i - k])) {
             currentVowelCount--;
         }
-        
+
         // If the character entering the window is a vowel, increment count
         if (vowels.has(s[i])) {
             currentVowelCount++;
